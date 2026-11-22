@@ -1,0 +1,28 @@
+{
+  "name": "kaneki-bot",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "KANEKI BOT - Arabic WhatsApp bot built on Baileys",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "check": "find index.js Famiglia -name '*.js' -print0 | xargs -0 -n1 node --check"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.80",
+    "@whiskeysockets/baileys": "npm:@muhammadridwanf61/baileys-nextgen@latest",
+    "axios": "^1.7.9",
+    "chalk": "^5.4.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "formdata-node": "^6.0.3",
+    "got-scraping": "^4.2.2",
+    "pino": "^9.6.0",
+    "qrcode-terminal": "^0.12.0",
+    "tough-cookie": "^6.0.2",
+    "yt-search": "^2.13.1"
+  }
+}

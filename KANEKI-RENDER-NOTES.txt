@@ -1,0 +1,12 @@
+KANEKI BOT - Render
+
+Build Command: npm install
+Start Command: npm start
+Node.js: 22 or newer
+
+Environment variables (optional overrides):
+OWNER_NUMBER=249117929877
+PHONE_NUMBER=249117929877
+SESSION_DIR=/var/data/sessions/main
+
+IMPORTANT: Add a Render Persistent Disk mounted at /var/data. This bot stores WhatsApp session files and SQLite data; without persistent storage, the session/database may be lost on redeploy/restart. Keep credentials private.
