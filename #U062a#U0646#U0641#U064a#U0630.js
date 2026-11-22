@@ -1,0 +1,37 @@
+import { inspect } from "util";
+import { downloadMediaMessage } from "@whiskeysockets/baileys";
+import { db } from "../../database/db.js";
+
+export default {
+  name: ["تنفيذ"],
+  description: "ينفّذ كود JavaScript",
+  category: "المالك",
+  ownerOnly: true,
+
+  async run(ctx) {
+    const { reply, text, sock, from, msg } = ctx;
+
+    if (!text?.trim()) return reply({ text: ( "❌ لا يوجد كود لتنفيذه.") });
+
+    const exec = (code) => eval(`(async () => { ${code} })()`);
+
+    try {
+      let result;
+      try {
+        result = await exec(`return (${text})`);
+      } catch (e) {
+        if (!(e instanceof SyntaxError)) throw e;
+        result = await exec(text);
+      }
+
+      const out =
+        typeof result === "string" ? result : inspect(result, { depth: 2 });
+
+      await reply({
+        text: ( `✅ *النتيجة:*\n\`\`\`${out.slice(0, 400000) || "undefined"}\`\`\``),
+      });
+    } catch (e) {
+      await reply({ text: ( `❌ *خطأ:*\n\`\`\`${e?.stack ?? e}\`\`\``) });
+    }
+  },
+};
